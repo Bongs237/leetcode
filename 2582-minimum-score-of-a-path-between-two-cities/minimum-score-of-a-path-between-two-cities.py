@@ -13,8 +13,6 @@ class Solution:
             adj[road[0]].append([road[1], road[2]])
             adj[road[1]].append([road[0], road[2]])
 
-        print(adj)
-
         visited = set()
         visited.add(1)
         queue.appendleft(1)
@@ -28,13 +26,10 @@ class Solution:
                     queue.appendleft(child)
                     connected.append(child)
 
-        print(connected)
-
-        ans = 10000000
+        # ans = basically the lowest path out of all the edges connected to node 1
+        ans = 10000000 # big number it will never hit
         for connected_node in connected:
-            print("on node", connected_node)
             for child, dist in adj[connected_node]:
-                print("Looking at", child, dist)
                 ans = min(ans, dist)
 
         return ans
