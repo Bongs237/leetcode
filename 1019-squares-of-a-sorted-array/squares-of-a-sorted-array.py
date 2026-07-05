@@ -19,6 +19,7 @@ class Solution:
         j = start_pos - 1 # - pointer
         ans = []
 
+        # Merge two sooooorted lists~~~
         while i < len(nums) and j >= 0:
             if nums[i] <= -nums[j]:
                 # i wins
