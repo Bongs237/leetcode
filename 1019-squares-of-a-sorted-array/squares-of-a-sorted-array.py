@@ -7,8 +7,6 @@ class Solution:
                 start_pos = i
                 break
 
-        print(start_pos)
-
         if start_pos is None:
             # they're all negative
             return [num ** 2 for num in nums[::-1]]
@@ -22,16 +20,13 @@ class Solution:
         ans = []
 
         while i < len(nums) and j >= 0:
-            print("compare", nums[i], -nums[j])
             if nums[i] <= -nums[j]:
                 # i wins
                 ans.append(nums[i] ** 2)
-                print(nums[i], "wins")
                 i += 1
             else:
                 # j wins
                 ans.append(nums[j] ** 2)
-                print(-nums[j], "wins")
                 j -= 1
 
         while i < len(nums):
