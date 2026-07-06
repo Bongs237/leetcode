@@ -2,7 +2,6 @@ class Solution:
     def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
         # merge intervals: electric boogaloo
         intervals.sort()
-        print(intervals)
 
         # Remove the smaller interval in terms of size
         # larger in terms of interval[0]
@@ -17,16 +16,16 @@ class Solution:
             second = intervals[i]
 
             if first[1] >= second[1]:
-                print("COVERED")
+                # covered, dont include the second one
+                pass
             elif second[1] >= first[1] and first[0] == second[0]:
-                print("also covered")
+                # covered, where you got intervals that are like
+                """
+                first  ------
+                second ---------------
+                """
                 removed[-1] = second
             else:
-                print("we're good")
                 removed.append(second)
-
-            print(first, second)
-            
-            print("removed=", removed)
 
         return len(removed)
