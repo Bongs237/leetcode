@@ -3,10 +3,9 @@ class Solution:
         non0 = 0
         dig_sum = 0
 
-        temp = n
         power = 0
-        while temp != 0:
-            digit = temp % 10
+        while n != 0:
+            digit = n % 10
 
             if digit != 0:
                 non0 += digit * (10 ** power)
@@ -14,6 +13,6 @@ class Solution:
             
             dig_sum += digit
 
-            temp = temp // 10
+            n = n // 10
 
         return non0 * dig_sum
