@@ -13,13 +13,12 @@
  */
 
 function sortedArrayToBST(nums: number[]): TreeNode | null {
+    // Strat: Keep picking the mid and then add the mid of the left and right sublists
     function addMid(left: number, right: number) {
-        if (right - left + 1 == 1) {
+        // They the same thing
+        if (right == left) {
             return new TreeNode(nums[right]);
-        }
-
-        if (right - left + 1 < 1) {
-            console.log("You don't gotta add it, return~");
+        } else if (right - left + 1 < 1) {
             return null;
         }
 
