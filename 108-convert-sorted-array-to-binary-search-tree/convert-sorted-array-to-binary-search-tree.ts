@@ -13,28 +13,11 @@
  */
 
 function sortedArrayToBST(nums: number[]): TreeNode | null {
-    // Strat: Keep picking the mid and then add the mid of the left and right sublists
-    function addMid(left: number, right: number) {
-        // They the same thing
-        if (right == left) {
-            return new TreeNode(nums[right]);
-        } else if (right - left + 1 < 1) {
-            return null;
-        }
-
-        const mid = left + Math.floor((right - left) / 2);
-        let node = new TreeNode(nums[mid]);
-
-        node.left = addMid(left, mid - 1);
-        node.right = addMid(mid + 1, right);
-
-        return node;
-    }
-
+    // Ugly iterative method
     const stack = [];
     let root;
 
-    // [left, right, parent node, child type "left" or "right"]
+    // Structure: [left, right, parent node, child type "left" or "right"]
     stack.push([0, nums.length - 1, null, null]);
 
     while (stack.length != 0) {
@@ -54,15 +37,11 @@ function sortedArrayToBST(nums: number[]): TreeNode | null {
 
         // Compute range of left + push
         const leftRange = (mid - 1) - left + 1;
-        //console.log(leftRange, "left range");
         if (leftRange >= 1) stack.push([left, mid - 1, newNode, "left"]);
 
         // Compute range of right + push
         const rightRange = right - (mid + 1) + 1
-        //console.log(rightRange, "right range");
         if (rightRange >= 1) stack.push([mid + 1, right, newNode, "right"]);
-
-        //console.log(stack);
     }
 
     return root;
