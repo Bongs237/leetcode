@@ -16,11 +16,9 @@ class Solution:
                 continue
 
             if new_change < 0 and not last_change < 0:
-                print("case 1")
                 return False
 
             if new_change > 0 and not last_change > 0:
-                print("case 2")
                 return False
 
             last_change = new_change
