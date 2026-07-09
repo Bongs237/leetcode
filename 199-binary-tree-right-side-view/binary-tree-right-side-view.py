@@ -13,20 +13,16 @@ class Solution:
         queue.append(root)
 
         ans = []
-
         while queue:
-            #curr_level = []
             for i in range(len(queue)):
                 curr = queue.popleft()
-                #curr_level.append(curr.val)
-
-                #print(curr.val)
 
                 if curr.left:
                     queue.append(curr.left)
                 if curr.right:
                     queue.append(curr.right)
 
+            # You append the last one you traversed on that level
             ans.append(curr.val)
 
         return ans
