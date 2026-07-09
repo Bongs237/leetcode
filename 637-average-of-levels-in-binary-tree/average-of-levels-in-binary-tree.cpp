@@ -17,7 +17,7 @@ public:
 
         q.push(root);
         while (!q.empty()) {
-            double theSum = 0;
+            double theSum = 0; // So it does decimal division
             int levelSize = q.size();
             for (int i = 0; i < levelSize; i++) {
                 TreeNode* curr = q.front();
