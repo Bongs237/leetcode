@@ -12,7 +12,7 @@ class Solution:
 
         fast = head.next
 
-        while slow and fast:
+        while slow and fast and fast.next:
             # If one is going at 1x and another going at 2x
             # if there is a cycle,
             # eventually both will hit the same node at the same time
@@ -20,8 +20,6 @@ class Solution:
                 return True
 
             slow = slow.next
-            if fast.next is None: # If we went off the end with fast, there is no cycle
-                return False
             fast = fast.next.next
         
         return False
