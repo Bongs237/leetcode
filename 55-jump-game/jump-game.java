@@ -14,7 +14,6 @@ class Solution {
 
         */
         if (nums.length == 1) return true;
-        if (nums.length == 2) return nums[0] != 0;
 
         int maxFound = -1;
 
