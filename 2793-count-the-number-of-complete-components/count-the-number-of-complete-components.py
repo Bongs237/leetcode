@@ -26,17 +26,23 @@ class Solution:
             visited.add(src)
 
             nodes = 0
-            total_adj_nodes = 0 # sum of the count of neighbors for each node
+            total_adj_nodes = 0 # sum of the count of neighbors for each node (duplicates included)
+            # also called the degree
 
+            # Count em
             while queue:
                 curr = queue.popleft()
+
                 nodes += 1
                 total_adj_nodes += len(adj[curr])
+
                 for child in adj[curr]:
                     if child not in visited:
                         visited.add(child)
                         queue.append(child)
 
+            # If the component is complete, it should be this many
+            # Each node goes to every other node x every node in component
             expected_total_adj_nodes = (nodes - 1) * nodes
             return expected_total_adj_nodes == total_adj_nodes
 
