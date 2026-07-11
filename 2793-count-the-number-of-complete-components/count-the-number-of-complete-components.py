@@ -52,10 +52,11 @@ class Solution:
         for nodes in comp:
             nodes = list(nodes)
             is_complete = True
+            # o n cubed oh heck nah
             for i in range(len(nodes)):
                 for j in range(i+1, len(nodes)):
                     first, second = nodes[i], nodes[j]
-                    print("testing", first, second)
+                    #print("testing", first, second)
                     if not([first, second] in edges or [second, first] in edges):
                         is_complete = False
                         break
