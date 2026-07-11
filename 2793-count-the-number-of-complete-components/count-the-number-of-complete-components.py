@@ -49,7 +49,13 @@ class Solution:
                         visited.add(child)
                         queue.append(child)
 
-            return visited
+            is_complete = True
+            for node in visited:
+                if len(adj[node]) != len(visited) - 1:
+                    is_complete = False
+                    break
+
+            return visited, is_complete
 
         adj = [[] for i in range(n)]
         edge_pairs = set()
@@ -58,24 +64,13 @@ class Solution:
             adj[edge[1]].append(edge[0])
             edge_pairs.add(Pair(edge[0], edge[1]))
 
+        ans = 0
         for i in range(n):
             if i not in visited:
-                vis_for_node = bfs(i)
+                vis_for_node, is_complete = bfs(i)
                 visited.update(vis_for_node)
                 comp.append(vis_for_node)
-
-        ans = 0
-        for nodes in comp:
-            nodes = list(nodes)
-            is_complete = True
-            for i in range(len(nodes)):
-                for j in range(i+1, len(nodes)):
-                    p = Pair(nodes[i], nodes[j])
-                    if p not in edge_pairs:
-                        is_complete = False
-                        break
-
-            if is_complete:
-                ans += 1
+                if is_complete:
+                    ans += 1
 
         return ans
