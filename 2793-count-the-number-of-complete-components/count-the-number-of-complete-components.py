@@ -12,65 +12,43 @@ class Solution:
         Find connected components
         Eliminate components that are not complete
         """
-
-        # Jank class
-        class Pair:
-            def __init__(self, m, n):
-                self.m = m
-                self.n = n
-
-            def __str__(self):
-                return "Pair[" + str(self.m) + ", " + str(self.n) + "]"
-
-            def __repr__(self):
-                return str(self)
-
-            def __eq__(self, other):
-                return (self.m == other.m and self.n == other.n) or (self.m == other.n and self.n == other.m)
-
-            def __hash__(self):
-                return hash(str(min(self.m, self.n)) + " " + str(max(self.m, self.n)))
-
         # global
         visited = set()
         comp = []
 
         def bfs(src):
-            visited = set()
+            # We can use the global visited
+            # cuz we call this at the start of a new connected component
+            nonlocal visited
             queue = deque()
 
             queue.append(src)
             visited.add(src)
 
+            nodes = 0
+            total_adj_nodes = 0 # sum of the count of neighbors for each node
+
             while queue:
                 curr = queue.popleft()
+                nodes += 1
+                total_adj_nodes += len(adj[curr])
                 for child in adj[curr]:
                     if child not in visited:
                         visited.add(child)
                         queue.append(child)
 
-            is_complete = True
-            for node in visited:
-                if len(adj[node]) != len(visited) - 1:
-                    is_complete = False
-                    break
-
-            return visited, is_complete
+            expected_total_adj_nodes = (nodes - 1) * nodes
+            return expected_total_adj_nodes == total_adj_nodes
 
         adj = [[] for i in range(n)]
-        edge_pairs = set()
         for edge in edges:
             adj[edge[0]].append(edge[1])
             adj[edge[1]].append(edge[0])
-            edge_pairs.add(Pair(edge[0], edge[1]))
 
         ans = 0
         for i in range(n):
             if i not in visited:
-                vis_for_node, is_complete = bfs(i)
-                visited.update(vis_for_node)
-                comp.append(vis_for_node)
-                if is_complete:
+                if bfs(i):
                     ans += 1
 
         return ans
