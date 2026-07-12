@@ -3,36 +3,32 @@ private:
     stack<int> input;
     stack<int> output;
 
-public:
-    MyQueue() {
-        //
+    void transfer() {
+        if (output.empty()) {
+            while (!input.empty()) {
+                int curr = input.top();
+                input.pop();
+                output.push(curr);
+            }
+        }
     }
+
+public:
+    MyQueue() {}
     
     void push(int x) {
         input.push(x);
     }
     
     int pop() {
-        if (output.empty()) {
-            while (!input.empty()) {
-                int curr = input.top();
-                input.pop();
-                output.push(curr);
-            }
-        }
+        transfer();
         int ret = output.top();
         output.pop();
         return ret;
     }
     
     int peek() {
-        if (output.empty()) {
-            while (!input.empty()) {
-                int curr = input.top();
-                input.pop();
-                output.push(curr);
-            }
-        }
+        transfer();
         return output.top();
     }
     
