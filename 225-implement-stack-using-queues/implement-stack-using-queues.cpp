@@ -10,14 +10,6 @@ public:
     }
     
     int pop() {
-        if (queue1.empty()) {
-            while (!queue2.empty()) {
-                int front = queue2.front();
-                queue2.pop();
-                queue1.push(front);
-            }
-        }
-        
         while (queue1.size() > 1) {
             int front = queue1.front();
             queue1.pop();
@@ -25,24 +17,28 @@ public:
         }
         int ret = queue1.front();
         queue1.pop();
+
+        // Swap references (this is allowed cuz you're not making another object, it's still 2 queues)
+        queue<int> temp = queue1;
+        queue1 = queue2;
+        queue2 = temp;
+
         return ret;
     }
     
     int top() {
-        if (queue1.empty()) {
-            while (!queue2.empty()) {
-                int front = queue2.front();
-                queue2.pop();
-                queue1.push(front);
-            }
-        }
-
         int front;
         while (!queue1.empty()) {
             front = queue1.front();
             queue1.pop();
             queue2.push(front);
         }
+
+        // Swap references
+        queue<int> temp = queue1;
+        queue1 = queue2;
+        queue2 = temp;
+
         return front;
     }
     
