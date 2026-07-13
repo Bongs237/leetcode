@@ -21,11 +21,11 @@ class Solution:
             # or else you're gonna have a digit "10"
             len_digits += 1
             starting = 1
+
         i = low
         
-        # i think i technically also need to check if i run out of digits inside the loop
-        # but since the constraints say <= 10^9, the max number i can generate is 123,456,789
-        # generate_sequence(10, 1) -> 1234567900 (which would break)
+        # And case is if you end up generating a sequence that "runs out of digits"
+        # e.g. you want a 5 digit number that starts with the number 9
         while (i := generate_sequence(len_digits, starting)) <= high and starting + len_digits - 1 < 10:
             if starting >= (10 - len_digits):
                 starting = 0
