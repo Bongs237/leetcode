@@ -13,29 +13,23 @@ class Solution:
         len_digits = len(digits)
         starting = int(digits[0])
 
-        print(len_digits, starting)
-
         # round up case
         if low > generate_sequence(len_digits, starting):
             starting += 1
-
-        print(len_digits, starting)
 
         if starting > (10 - len_digits):
             # or else you're gonna have a digit "10"
             len_digits += 1
             starting = 1
-
-        # 23456789
-        # 28932835
-
-        print(len_digits, starting)
-
+            
         # you ran out of digits
         if starting + len_digits - 1 >= 10:
             return []
 
         i = low
+        # i think i technically also need to check if i run out of digits inside the loop
+        # but since the constraints say <= 10^9, the max number i can generate is 123,456,789
+        # generate_sequence(10, 1) -> 1234567900 (which would break)
         while (i := generate_sequence(len_digits, starting)) <= high:
             if starting >= (10 - len_digits):
                 starting = 0
