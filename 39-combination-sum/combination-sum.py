@@ -16,6 +16,7 @@ class Solution:
 
             for poss_freq in range(0, max_freq + 1):
                 next_targ_left = target_left - (poss_freq * candidates[i])
+                # add this number * poss freq number of times to combo e.g. 5 x 2 times -> [5, 5]
                 form_sum(i + 1, next_targ_left, combo + [candidates[i]] * poss_freq)
 
         form_sum(0, target, [])
