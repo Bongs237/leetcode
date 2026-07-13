@@ -7,8 +7,6 @@ class Solution:
             if target_left == 0:
                 combos.append(combo)
                 return
-            elif target_left < 0:
-                return
             elif i >= len(candidates):
                 return
 
