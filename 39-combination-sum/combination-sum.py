@@ -44,9 +44,6 @@ class Solution:
                 #print("calling recursively", next_targ_left)
                 form_sum(i + 1, next_targ_left, combo.with_new_item(candidates[i], poss_freq))
 
-        candidates.sort()
-        candidates = candidates[::-1]
-
         form_sum(0, target, Combo([]))
 
         return combos
