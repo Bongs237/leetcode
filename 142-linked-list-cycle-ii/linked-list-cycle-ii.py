@@ -9,13 +9,12 @@ class Solution:
         slow = head
         fast = head
         cycle = False
+        
         while slow and fast and fast.next:
-            print(slow.val, fast.val)
-
             slow = slow.next
             fast = fast.next
             fast = fast.next
-            
+
             if slow is fast:
                 cycle = True
                 break
