@@ -22,6 +22,8 @@ class Solution {
                 ans = Math.max(ans, seq);
             }
 
+            // If the sequence is longer than half the array size
+            // there is no physical way there will be a longer sequence
             if (ans > nums.length / 2) {
                 break;
             }
