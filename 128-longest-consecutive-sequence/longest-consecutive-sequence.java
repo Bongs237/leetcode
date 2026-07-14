@@ -9,7 +9,8 @@ class Solution {
 
         int ans = 1;
 
-        for (int num : nums) {
+        // Go through every element in the SET to avoid duplicates and save time complexity
+        for (int num : numSet) {
             if (numSet.contains(num - 1)) {
                 continue;
             }
