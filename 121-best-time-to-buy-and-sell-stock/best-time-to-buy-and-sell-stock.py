@@ -36,7 +36,7 @@ class Solution:
         # ...
         # then you get max of that
         max_found = 0
-        for i in range(len(optimal) - 1):
+        for i in range(len(optimal) - 1): # you cant both buy and sell on the last day
             max_found = max(max_found, optimal[i] - prices[i])
             
         return 0 if max_found < 0 else max_found
