@@ -13,6 +13,7 @@ class Solution {
         // n(n+1)-n= n^2+n-n = n^2
 
         // The gcd is just n... smh
+        // This legit is fewer lines than "add two integers"
 
         //int sumEven = n * (n + 1);
         //int sumOdd = sumEven - n;
