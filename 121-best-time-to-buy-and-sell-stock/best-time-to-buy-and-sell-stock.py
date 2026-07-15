@@ -18,16 +18,13 @@ class Solution:
         # but max is O(n)
         # go backwards
 
-        optimal = [0] * len(prices)
         max_val = 0
-        for i in range(len(optimal) - 1, -1, -1):
+        max_found = 0
+        for i in range(len(prices) - 1, -1, -1):
             max_val = max(prices[i], max_val)
-            optimal[i] = max_val
 
-        # Now the first element does not "see" itself
-        optimal[0] = optimal[1]
-
-        print(optimal)
+            if i != len(prices) - 1:
+                max_found = max(max_found, max_val - prices[i])
 
         # then you find the differences
         # 7: 6-7=-1
@@ -35,8 +32,5 @@ class Solution:
         # 5: 6-5=1
         # ...
         # then you get max of that
-        max_found = 0
-        for i in range(len(optimal) - 1): # you cant both buy and sell on the last day
-            max_found = max(max_found, optimal[i] - prices[i])
             
         return 0 if max_found < 0 else max_found
