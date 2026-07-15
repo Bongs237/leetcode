@@ -2,7 +2,6 @@ class Solution:
     def simplifyPath(self, path: str) -> str:
         # split path
         path_list = path.split("/")
-        print(path_list)
         new_path = []
 
         for i, folder in enumerate(path_list):
