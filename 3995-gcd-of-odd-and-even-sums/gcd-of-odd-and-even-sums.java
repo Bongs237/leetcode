@@ -16,8 +16,15 @@ class Solution {
         // =1 + 3 + 5 + 7
         // n(n+1)-1*n
         // n(n+1)-n
+        
+        // n(n+1)=n^2+n
+
+        // n(n+1)-n= n^2+n-n = n^2
+
+        // 
+
         int sumEven = n * (n + 1);
         int sumOdd = sumEven - n;
-        return gcd(sumOdd, sumEven);
+        return n;
     }
 }
