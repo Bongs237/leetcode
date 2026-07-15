@@ -1,13 +1,4 @@
 class Solution {
-    public int gcd(int a, int b) {
-        while (b != 0) {
-            int remainder = a % b;
-            a = b;
-            b = remainder;
-        }
-        return a;
-    }
-
     public int gcdOfOddEvenSums(int n) {
         // 1 + 2 + 3 + 4 + ... = n(n+1)/2
         // 2 + 4 + 6 + 8 + ... = 2n(n+1)/2 = n(n+1)
@@ -21,10 +12,10 @@ class Solution {
 
         // n(n+1)-n= n^2+n-n = n^2
 
-        // 
+        // The gcd is just n... smh
 
-        int sumEven = n * (n + 1);
-        int sumOdd = sumEven - n;
+        //int sumEven = n * (n + 1);
+        //int sumOdd = sumEven - n;
         return n;
     }
 }
