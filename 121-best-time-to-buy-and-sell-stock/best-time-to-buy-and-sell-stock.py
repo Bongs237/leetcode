@@ -1,10 +1,5 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        if len(prices) == 2:
-            return 0 if prices[0] > prices[1] else prices[1] - prices[0]
-        elif len(prices) < 2:
-            return 0
-
         # for every day, theres an optimal day to sell the stock to max the profits
         # thats just the maximum value after the day
         # 7, 1, 5, 3, 6, 4
