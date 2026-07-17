@@ -2,7 +2,6 @@ class Solution:
     def divide(self, dividend: int, divisor: int) -> int:
         # Determine sign
         negative = (dividend < 0 and divisor > 0) or (dividend > 0 and divisor < 0)
-        print(negative)
         
         """
         27/3 quotient: 9
