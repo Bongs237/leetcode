@@ -1,6 +1,13 @@
 class Solution:
     def minimumCost(self, nums: list[int], k: int) -> int:
-        total = sum(nums)
+        return 0 if sum(nums) - k <= 0 else math.ceil(
+            ((sum(nums) - k) / k)) * math.ceil(
+                (
+                    (sum(nums) - k) / k
+                ) + 1) // 2 % (10 ** 9 + 7)
+        
+        
+        """          total = sum(nums)
         amount = total - k
         if amount <= 0:
             return 0
@@ -8,6 +15,7 @@ class Solution:
         count = math.ceil(amount / k)
         total_cost = count * (count + 1) // 2
         return total_cost % (10 ** 9 + 7)
+        """
             
         """
         4-(1+2+3+4)
@@ -21,12 +29,8 @@ class Solution:
         yay
         total operations: 2
         total cost: 2(2+1)/2=3
-        """
-        
-
-
-        """
-        for n in nums:
+     fo i in nums:
+ 
             print("processing", n)
             if resources < n:
                 amount = n - resources
