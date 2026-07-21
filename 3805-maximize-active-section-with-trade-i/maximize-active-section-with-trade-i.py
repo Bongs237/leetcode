@@ -29,6 +29,7 @@ class Solution:
 
                     st.append([0, i])
                 elif s[i] == '1':
+                    # Only add a 1 if we've seen a 0 block first
                     if st:
                         st.append([1, i])
 
@@ -36,9 +37,10 @@ class Solution:
             # It's a 0, and it's at the end, or the char after this one is a 1
             if s[i] == '0' and (i == len(s) - 1 or (i < len(s) - 1 and s[i + 1] == '1')):
                 if blocks:
-                    # set end
+                    # set the end of 0s
                     blocks[-1][3] = i
                     start0, start1, end1, end0 = blocks[-1]
+
                     # then refactor so it only contains the number of 0's replaced
                     num_zero_left = start1 - start0
                     num_zero_right = end0 - end1 + 1
