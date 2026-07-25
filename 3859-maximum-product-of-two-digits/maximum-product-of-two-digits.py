@@ -14,9 +14,6 @@ class Solution:
             elif digit > second:
                 second = digit
 
-            print("digit", digit)
-            print(first, second)
-
             n = n // 10
 
         return first * second
