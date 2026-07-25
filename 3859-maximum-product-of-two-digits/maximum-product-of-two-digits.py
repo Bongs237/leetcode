@@ -1,7 +1,5 @@
 class Solution:
     def maxProduct(self, n: int) -> int:
-        p = 1
-
         first = 0
         second = 0
 
