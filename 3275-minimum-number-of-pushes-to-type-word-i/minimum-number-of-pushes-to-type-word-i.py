@@ -6,16 +6,6 @@ class Solution:
         
         # if 17-24, third press
         # if 25, 26 - fourth press on 7 and 9
-
-        """
-        a
-        c
-        o
-        l
-
-        """
-        print(len(word))
-
         max_press = math.ceil(len(word) / 8)
 
         ans = 0
