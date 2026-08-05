@@ -15,21 +15,18 @@ class Solution:
         for u, v in invocations:
             adj[u].append(v)
 
-        def bfs(src):
-            queue = deque()
+        # do bfs on k
+        queue = deque()
+        queue.append(k)
+        sus.add(k)
 
-            queue.append(src)
-            sus.add(src)
+        while queue:
+            curr = queue.popleft()
 
-            while queue:
-                curr = queue.popleft()
-
-                for child in adj[curr]:
-                    if child not in sus:
-                        sus.add(child)
-                        queue.append(child)
-
-        bfs(k)
+            for child in adj[curr]:
+                if child not in sus:
+                    sus.add(child)
+                    queue.append(child)
 
         can_remove = True
         for u, v in invocations:
