@@ -11,17 +11,9 @@ class Solution:
         """
 
         sus = set()
-
         adj = [[] for i in range(n)]
         for u, v in invocations:
             adj[u].append(v)
-
-        # all the elements pointing back to that element
-        back = [[] for i in range(n)]
-        for u, v in invocations:
-            back[v].append(u)
-
-        print(back)
 
         def bfs(src):
             queue = deque()
@@ -40,16 +32,14 @@ class Solution:
         bfs(k)
 
         can_remove = True
+        for u, v in invocations:
+            # If there is an edge that goes from non sus to sus, that sus element can't be removed
+            # And from problem statement, that means you should NOT remove any elements anymore
+            if u not in sus and v in sus:
+                can_remove = False
+                break
 
-        for ele in sus:
-            back_pointing = back[ele]
-
-            for pointer in back_pointing:
-                if pointer not in sus:
-                    can_remove = False
-                    break
-
-        if not can_remove:
-            return [i for i in range(n)]
-        else:
+        if can_remove:
             return [i for i in range(n) if i not in sus]
+        else:
+            return [i for i in range(n)]
