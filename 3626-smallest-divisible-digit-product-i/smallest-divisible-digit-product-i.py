@@ -1,6 +1,6 @@
 class Solution:
     def smallestNumber(self, n: int, t: int) -> int:
-        for i in range(n, 101):
+        for i in range(n, n + 10):
             # get sum of digits of i
             temp = i
             total = 1
