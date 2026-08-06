@@ -1,17 +1,13 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        alpha = [["".join(sorted(s)), s] for s in strs]
-        alpha.sort()
+        d = defaultdict(list) # {frequency of letters in word: all words that have the frequency}
 
-        ans = []
-        curr = [ alpha[0][1] ]
-        for i in range(1, len(alpha)):
-            if alpha[i - 1][0] == alpha[i][0]:
-                curr.append(alpha[i][1])
-            else:
-                ans.append(curr)
-                curr = [ alpha[i][1] ]
+        for st in strs:
+            # count freq
+            freq = [0] * 26
+            for ch in st:
+                freq[ord(ch) - ord('a')] += 1
+            
+            d[tuple(freq)].append(st)
 
-        ans.append(curr)
-
-        return ans
+        return list(d.values())
