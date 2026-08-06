@@ -6,7 +6,6 @@ class Solution:
             total = 1
             while temp > 0:
                 total *= temp % 10
-                print(temp % 10)
                 temp = temp // 10
 
             if total % t == 0:
