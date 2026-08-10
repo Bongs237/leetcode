@@ -21,9 +21,6 @@ class Solution:
                 if total < -nums[i]:
                     # move j up
                     j += 1
-                    while j < len(nums) and nums[j] == nums[j - 1]:
-                        #print("skipping")
-                        j += 1
                 elif total > -nums[i]:
                     # move k down
                     k -= 1
