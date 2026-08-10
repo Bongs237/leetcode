@@ -1,43 +1,42 @@
 class Solution:
-    def threeSum(self, nums: list[int]) -> list[list[int]]:
-        res = []
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
-        #print(str(nums) + "\n")
+        #print(nums)
 
-        i = 0
+        ans = []
 
-        while i < len(nums):
-            k = len(nums) - 1
-            j = i + 1
-
-            # avoid duplicate i's
+        for i in range(len(nums)):
+            #print("i is at", nums[i])
             if i > 0 and nums[i] == nums[i - 1]:
-                i += 1
+                #print("skipping i")
                 continue
 
+            j = i + 1
+            k = len(nums) - 1
+
+            # goal is to get -i = j+k
             while j < k:
-                #print("indices", i, j, k)
-                total = nums[i] + nums[j] + nums[k]
-
-                #print("values", nums[i], nums[j], nums[k], "=", total)
-                if total > 0: # We want smaller
-                    #print("smaller plz")
-                    k -= 1
-                elif total < 0: # We want bigger
-                    #print("bigger plz")
+                total = nums[j] + nums[k]
+                #print("adding", nums[j], "+", nums[k], "compare to", -nums[i])
+                if total < -nums[i]:
+                    # move j up
                     j += 1
-                else: # total = 0
-                    triple = [nums[i], nums[j], nums[k]]
-                    #print("found", triple)
-
-                    res.append(triple)
-                    j += 1
-                    # avoid duplicate "j's"
-                    while j < k and nums[j - 1] == nums[j]:
+                    while j < len(nums) and nums[j] == nums[j - 1]:
+                        #print("skipping")
                         j += 1
-                        #print("Moving j to", j)
+                elif total > -nums[i]:
+                    # move k down
+                    k -= 1
+                else:
+                    # found
+                    #print("found")
+                    ans.append([nums[i], nums[j], nums[k]])
 
-            #print("Loop is done")
-            i += 1
+                    j += 1
+                    while j < len(nums) and nums[j] == nums[j - 1]:
+                        #print("skipping")
+                        j += 1
 
-        return res
+                    k -= 1
+
+        return ans
