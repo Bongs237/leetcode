@@ -6,7 +6,6 @@ class Solution:
         num_set = set(nums)
         start = nums[0]
         end = nums[0]
-        ans = 0
         
         i = 1
         while i < len(nums) and nums[i] == nums[i - 1] + 1:
