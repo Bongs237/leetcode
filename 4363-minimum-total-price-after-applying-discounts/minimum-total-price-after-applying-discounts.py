@@ -1,12 +1,7 @@
 class Solution:
     def minPrice(self, prices: list[int], discounts: list[int]) -> float:
-        def disc(price, discount):
-            return (price * (100 - discount)) / 100
-
-        prices.sort()
-        prices = prices[::-1]
-        discounts.sort()
-        discounts = discounts[::-1]
+        prices.sort(reverse=True)
+        discounts.sort(reverse=True)
 
         # assign biggest discount to biggest number
         ans = 0
@@ -15,6 +10,6 @@ class Solution:
             if i >= len(discounts):
                 ans += prices[i]
             else:
-                ans += disc(prices[i], discounts[i])
+                ans += (prices[i] * (100 - discounts[i])) / 100
 
         return ans
