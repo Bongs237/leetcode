@@ -17,6 +17,8 @@ class Solution:
 
             # there are at least k elements in the current increasing subarray AND at least k elements in the last increasing subarray
             # OR, the two subarrays in the solution are inside one of our subarrays, so the subarray would have to be at least 2k long
+            # -> e.g. [-10, 5] k=1; subarr_len would equal [2]...
+            # but we can make two subarrays [-10] and [5]
             if curr >= k and last >= k or (curr >= 2 * k):
                 return True
                 
