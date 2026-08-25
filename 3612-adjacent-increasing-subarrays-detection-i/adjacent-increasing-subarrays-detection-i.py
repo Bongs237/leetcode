@@ -7,8 +7,6 @@ class Solution:
                 subarr_len[-1] += 1
             else:
                 subarr_len.append(1)
-                
-        print(subarr_len)
         
         for i in range(len(subarr_len)):
             last = 0
