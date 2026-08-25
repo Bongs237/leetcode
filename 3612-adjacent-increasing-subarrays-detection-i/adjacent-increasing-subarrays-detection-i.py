@@ -4,7 +4,6 @@ class Solution:
 
         for j in range(k, len(nums)):
             i = j - k
-            print(i, j)
             if i == 0 or (nums[i - 1] < nums[i] and nums[j - 1] < nums[j]):
                 streak += 1
                 if streak == k:
