@@ -15,6 +15,8 @@ class Solution:
 
             curr = subarr_len[i]
 
+            # there are at least k elements in the current increasing subarray AND at least k elements in the last increasing subarray
+            # OR, the two subarrays in the solution are inside one of our subarrays, so the subarray would have to be at least 2k long
             if curr >= k and last >= k or (curr >= 2 * k):
                 return True
                 
