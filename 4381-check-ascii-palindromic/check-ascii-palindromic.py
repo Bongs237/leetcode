@@ -1,18 +1,16 @@
 class Solution:
     def isPalindromic(self, s: str) -> bool:
-        arr = []
+        arr = ["0"] * (len(s) * 8)
 
-        def to_bin(n):
+        def to_bin(n, starting_index):
             nonlocal arr
-            ret = ["0"] * 8
-            i = 7
+
+            i = starting_index # 7, 15, ...
             while n > 0:
                 digit = n % 2
-                ret[i] = str(digit)
+                arr[i] = str(digit)
                 n = n // 2
                 i -= 1
-
-            arr = arr + ret
 
         def is_palin(arr):
             i = 0
@@ -25,10 +23,8 @@ class Solution:
 
             return True
 
-        for ch in s:
-            to_bin(ord(ch))
-
-        #print(arr)
+        for i, ch in enumerate(s):
+            to_bin(ord(ch), (8 * (i + 1) - 1))
 
         return is_palin(arr)
             
