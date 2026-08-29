@@ -1,18 +1,21 @@
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        l = 0
-        r = len(nums) - 1
+        left = 0
+        right = len(nums) - 1
+        mid = (left + right) // 2
 
-        while l <= r:
-            m = (l + r) // 2
+        if nums[left] <= nums[mid] <= nums[right]:
+            return nums[0]
 
-            # l, m are the same side
-            if nums[l] <= nums[m] and nums[m] > nums[r]:
-                l = m + 1
-            elif nums[m] <= nums[r] and nums[l] > nums[m]:
-                # m, r are on the same side
-                r = m
-            else: # l, m, r are in sorted order. they're all on the same "side" so l must be the minimum
-                return nums[l]
+        while left < right:
+            mid = (left + right) // 2
+            #print(nums[left], nums[mid], nums[right])
 
-        return -1
+            if nums[mid] < nums[0]:
+                #print("wow 1")
+                right = mid
+            else:
+                #print('wow 0')
+                left = mid + 1
+
+        return nums[left]
