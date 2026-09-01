@@ -10,12 +10,9 @@ class Solution:
         ans = None
 
         while curr:
-            if curr and curr.next is None:
-                ans = curr
-
             temp = curr.next
             curr.next = prev
             prev = curr
             curr = temp
         
-        return ans
+        return prev
