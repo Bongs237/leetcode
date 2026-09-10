@@ -26,8 +26,6 @@ class Solution:
                 subtree_sum = left_sum + right_sum + node.val
                 count = left_count + right_count + 1
 
-            #print(node.val, "ret=", subtree_sum)
-            #print(node.val, "got", count, "nodes")
             avg = subtree_sum // count
             if node.val == avg:
                 ans += 1
