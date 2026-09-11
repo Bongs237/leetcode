@@ -1,5 +1,4 @@
 import heapq
-from functools import cmp_to_key
 
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
