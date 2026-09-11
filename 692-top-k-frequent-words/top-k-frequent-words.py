@@ -1,19 +1,21 @@
+import heapq
+from functools import cmp_to_key
+
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        h = []
         d = defaultdict(int)
         for word in words:
             d[word] += 1
 
-        d1 = defaultdict(list)
-        for key, val in d.items():
-            d1[val].append(key)
+        for word, count in d.items():
+            structure = (-count, word)
+            heapq.heappush(h, structure)
 
-        l = [(key, sorted(val)) for key, val in d1.items()]
-        l.sort(reverse=True)
+        ans = []
 
-        l2 = []
-        for count, group in l:
-            for item in group:
-                l2.append(item)
+        for i in range(k):
+            count, word = heapq.heappop(h)
+            ans.append(word)
 
-        return l2[:k]
+        return ans
